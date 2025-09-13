@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   //  hero animations
   const linesContainer = document.getElementById("linesContainer");
-
   const linesArray = [...Array(70)];
 
   linesArray.forEach((_) => {
@@ -33,8 +32,44 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
   const lines = gsap.utils.toArray("#linesContainer .line");
 
+  const hero = document.getElementById("hero");
+  const follower = document.getElementById("mouseFollower");
 
-  
+  gsap.set(follower, { xPercent: -50, yPercent: -50 });
+  const quickX = gsap.quickTo(follower, "x", {
+    duration: 1,
+    ease: "power2",
+  });
+  const quickY = gsap.quickTo(follower, "y", {
+    duration: 1,
+    ease: "power2",
+  });
+  const handleFollower = (e) => {
+    quickX(e.clientX);
+    quickY(e.clientY);
+  };
+  Observer.create({
+    target: window,
+    onMove: (e) => {
+      handleFollower(e.event);
+    },
+  });
+
+  gsap.to(lines, {
+    opacity: 0,
+    scale: 1.5,
+    stagger: {
+      each: 0.01,
+      from: "random",
+    },
+    scrollTrigger: {
+      trigger: "#work",
+      start: "top bottom",
+      end: "+=500px",
+      scrub: 1,
+    },
+  });
+
   // intro
   document.fonts.ready.then(() => {
     const title = document.querySelector("#hero .title h1");
@@ -122,19 +157,135 @@ document.addEventListener("DOMContentLoaded", (event) => {
         },
         "<25%"
       )
-      .from(lines, {
-        autoAlpha: 0,
-        rotate:50,
-        transformOrigin:"top",
-        stagger:{
-          each:.05,
-          from:"center"
-        }
-      },'<50%');
+      .from(
+        lines,
+        {
+          autoAlpha: 0,
+          rotate: 50,
+          transformOrigin: "top",
+          stagger: {
+            each: 0.05,
+            from: "center",
+          },
+        },
+        "<50%"
+      );
 
     setTimeout(() => {
       logoAnimation.revert();
-      // introTl.play();
-    }, 0);
+      introTl.play();
+    }, 3000);
   });
+  const titleBlock = document.querySelector("#hero #titleBlock");
+  const tween = gsap.to(follower, {
+    scale: 10,
+    paused: true,
+  });
+  Observer.create({
+    target: titleBlock,
+    onHover: (e) => {
+      tween.play();
+    },
+    onHoverEnd: (e) => {
+      tween.reverse();
+    },
+  });
+
+  //  work animations
+
+  const workSvg = document.querySelector("#work svg");
+  const workPath = document.querySelector("#work path");
+  const work = document.getElementById("work");
+  const workPinWrapper = document.querySelector("#work .pin-wrapper");
+  const wokeImgs = gsap.utils.toArray("#work img");
+  const workWidth = gsap.getProperty(work, "width");
+  const workHeight = gsap.getProperty(work, "height");
+
+  const workMater = gsap.timeline();
+
+  const workIntroTl = gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: work,
+        start: "top 60%",
+        end: "top top",
+        scrub: 1,
+      },
+    })
+    .from(workPath, {
+      drawSVG: 0,
+    });
+  const workTl = gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: work,
+        start: "top top",
+        end: "+=10000",
+        scrub: 1,
+        pin: workPinWrapper,
+      },
+    })
+
+    .to(workSvg, {
+      scale: 70,
+      xPercent: 100,
+      yPercent: 200,
+      transformOrigin: "center bottom",
+    })
+    .to(
+      workPath,
+      {
+        attr: {
+          fill: "#e0e0e0",
+        },
+      },
+      "<30%"
+    )
+    .fromTo(
+      wokeImgs,
+      {
+        x: workWidth,
+        scale: 1.5,
+        clipPath: "inset(100% 0% 0% 0%)",
+      },
+      {
+        keyframes: [
+          {
+            clipPath: "inset(0% 0% 0% 0%)",
+            x: workWidth / 2,
+            scale: 1,
+          },
+          {
+            x: 0,
+          },
+          {
+            xPercent: -100,
+          },
+        ],
+        stagger: 0.5,
+      },
+      "<30%"
+    )
+    .to(
+      workSvg,
+      {
+        scale: 1,
+        xPercent: 0,
+        yPercent: 0,
+        transformOrigin: "center bottom",
+      },
+      "<80%"
+    )
+    .to(
+      workPath,
+      {
+        attr: {
+          fill: "#000",
+        },
+      },
+      "-=2"
+    );
+
+  workMater.add(workIntroTl);
+  workMater.add(workTl);
 });

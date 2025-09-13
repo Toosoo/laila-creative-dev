@@ -2,121 +2,164 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <title>creative dev</title>
-    <link rel="stylesheet" href="style.css">
-    <script
-            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0">
+        <title>creative dev</title>
+        <link rel="stylesheet" href="style.css">
+        <script
+                src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body
       class="bg-black relative text-gray-300">
-    <div id="smooth-wrapper">
-        <div id="smooth-content">
-            <header
-                    class="w-full absolute top-10 left-0 px-20 flex justify-between items-start">
-                <div
-                     class="flex items-end gap-2">
-                    <div class="relative">
-                        <div class="flex gap-1 absolute ">
-                            <span
-                                  class="size-5 bg-gray-300 rounded-full"></span>
-                            <span
-                                  class="size-5 bg-gray-300 rounded-full"></span>
-                            <span
-                                  class="size-5 bg-gray-300 rounded-full"></span>
-                        </div>
-                        <div class="flex gap-1">
-                            <a href="#">
-                                <img src="./images/fb.png" alt=""
-                                     class=" top-0 size-5">
-                            </a>
-                            <a href="#"
-                               class=" ">
-                                <img src="./images/ig.png" alt=""
-                                     class=" top-0 size-5"></a>
-                            <a href="#"
-                               class=" ">
-                                <img src="./images/in.png" alt=""
-                                     class=" top-0 size-5"></a>
-                        </div>
-                    </div>
-
-                    <div class="text-3xl 2xl:text-5xl font-boldonse relative">
-                        <h3 class="loading"> Loading </h3>
-                        <h3 class="laila absolute top-0 "> Laila </h3>
-                    </div>
-
-                </div>
-                <nav
-                     class="flex flex-col invisible font-boldonse">
-                    <a href="#" class="active"> Home </a>
-                    <a href="#"> work </a>
-                    <a href="#"> services </a>
-                    <a href="#"> About </a>
-                </nav>
-            </header>
-            <main class="min-h-screen">
-                <div id="hero"
-                     class="h-screen w-full relative flex items-end p-20 z-2">
-                    <div
-                         class="title  absolute-center font-boldonse text-5xl 2xl:text-8xl capitalize leading-normal">
-                        <h1 class="invisible"> i create insane </h1>
-                        <h2 class="uppercase flex justify-between"> websites
-                        </h2>
-                    </div>
-                    <p class="text invisible max-w-[500px] text-xl"> a
-                        frontend developer obsessed with crafting
-                        seamless user experiences. I blend clean,
-                        modern code with <strong> <i>
-                                attention-grabbing </i> </strong>
-                        animations to build designs that don’t just
-                        look good—they feel alive. </p>
-                    <div id="linesContainer"
-                         class="absolute-center -z-1 size-full inset-0 flex justify-between">
-                        <div id="mouseFollower"
-                             class="absolute z-1 size-10 rounded-full border-2 border-white/10 bg-black">
-                        </div>
-                    </div>
-            </main>
-            <footer>
-            </footer>
+        <div id="mouseFollower"
+             class="fixed pointer-events-none  -z-1 size-10 
+aspect-square rounded-full border border-white/30 bg-black top-0 left-0">
         </div>
-    </div>
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/GSDevTools.min.js"></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathHelper.min.js"></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-    <!-- ScrollSmoother requires ScrollTrigger -->
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
-    <!-- CustomBounce requires CustomEase -->
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomBounce.min.js"></script>
-    <!-- CustomWiggle requires CustomEase -->
-    <script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomWiggle.min.js"></script>
-    <script src="./main.js"></script>
+        <div id="smooth-wrapper">
+                <div id="smooth-content">
+                        <header
+                                class="w-full absolute top-10 left-0 px-20 flex justify-between items-start">
+                                <div
+                                     class="flex items-end gap-2">
+                                        <div class="relative">
+                                                <div
+                                                     class="flex gap-1 absolute ">
+                                                        <span
+                                                              class="size-5 bg-gray-300 rounded-full"></span>
+                                                        <span
+                                                              class="size-5 bg-gray-300 rounded-full"></span>
+                                                        <span
+                                                              class="size-5 bg-gray-300 rounded-full"></span>
+                                                </div>
+                                                <div
+                                                     class="flex gap-1">
+                                                        <a href="#">
+                                                                <img src="./images/fb.png"
+                                                                     alt=""
+                                                                     class=" top-0 size-5">
+                                                        </a>
+                                                        <a href="#"
+                                                           class=" ">
+                                                                <img src="./images/ig.png"
+                                                                     alt=""
+                                                                     class=" top-0 size-5"></a>
+                                                        <a href="#"
+                                                           class=" ">
+                                                                <img src="./images/in.png"
+                                                                     alt=""
+                                                                     class=" top-0 size-5"></a>
+                                                </div>
+                                        </div>
+                                        <div
+                                             class="text-3xl 2xl:text-5xl font-boldonse relative">
+                                                <h3 class="loading">
+                                                        Loading </h3>
+                                                <h3
+                                                    class="laila absolute top-0 ">
+                                                        Laila </h3>
+                                        </div>
+                                </div>
+                                <nav
+                                     class="flex flex-col invisible font-boldonse">
+                                        <a href="#" class="active">
+                                                Home </a>
+                                        <a href="#"> work </a>
+                                        <a href="#"> services </a>
+                                        <a href="#"> About </a>
+                                </nav>
+                        </header>
+                        <main class="min-h-screen">
+                                <div id="hero"
+                                     class="h-screen w-full relative flex items-end p-20 z-2">
+                                        <div
+                                             id="titleBlock"
+                                             class="title absolute-center font-boldonse text-5xl 2xl:text-8xl capitalize leading-normal">
+                                                <h1 class="invisible">
+                                                        i create
+                                                        insane </h1>
+                                                <h2
+                                                    class="uppercase flex justify-between">
+                                                        websites </h2>
+                                        </div>
+                                        <p
+                                           class="text invisible max-w-[500px] text-xl">
+                                                A frontend developer
+                                                obsessed with crafting
+                                                seamless user
+                                                experiences. I blend
+                                                clean, modern code
+                                                with <strong> <i>
+                                                                attention-grabbing
+                                                        </i> </strong>
+                                                animations to build
+                                                designs that don’t
+                                                just look good—they
+                                                feel alive. </p>
+                                        <div id="linesContainer"
+                                             class="absolute-center -z-1 size-full inset-0 flex justify-between">
+                                        </div>
+                                </div>
+                                <div id="work"
+                                     class=" overflow-hidden relative ">
+                                        <div
+                                             class="pin-wrapper h-screen relative">
+                                                <img src="./images/p1.jpg"
+                                                     class="absolute top-1/2 -translate-y-1/2 w-150">
+                                                <img src="./images/p1.jpg"
+                                                     class="absolute top-1/2 -translate-y-1/2 w-150">
+                                                <img src="./images/p1.jpg"
+                                                     class="absolute top-1/2 -translate-y-1/2 w-150">
+                                                <img src="./images/p1.jpg"
+                                                     class="absolute top-1/2 -translate-y-1/2 w-150">
+                                                <svg class="w-50 absolute-center -z-1"
+                                                     xmlns="http://www.w3.org/2000/svg"
+                                                     fill="none"
+                                                     viewBox="0 0 111 266">
+                                                        <path stroke="#E0E0E0"
+                                                              stroke-width="2"
+                                                              d="M55.3857 1v213.563H110V265H1V1h54.3857Z" />
+                                                </svg>
+                                        </div>
+                                </div>
+                        </main>
+                        <footer>
+                        </footer>
+                </div>
+        </div>
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/GSDevTools.min.js"></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathHelper.min.js"></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+        <!-- ScrollSmoother requires ScrollTrigger -->
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+        <!-- CustomBounce requires CustomEase -->
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomBounce.min.js"></script>
+        <!-- CustomWiggle requires CustomEase -->
+        <script
+                src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomWiggle.min.js"></script>
+        <script src="./main.js"></script>
 </body>
 
 </html>
