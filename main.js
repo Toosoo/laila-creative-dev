@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   gsap.registerPlugin(
     DrawSVGPlugin,
     GSDevTools,
+    Draggable,
     InertiaPlugin,
     MotionPathHelper,
     MotionPathPlugin,
@@ -15,10 +16,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
     CustomWiggle
   );
 
+  const servicesCards = gsap.utils.toArray("#services .card");
+  const toSkew = gsap.quickTo(servicesCards, "skewY");
+  const clamp = gsap.utils.clamp(-20, 20);
+
   // global
-  ScrollSmoother.create({
+  let smoother = ScrollSmoother.create({
     smooth: 2,
     effects: true,
+    onUpdate: (self) => toSkew(clamp(self.getVelocity() / -40)),
+    onStop: () => toSkew(0),
   });
 
   //  hero animations
@@ -173,8 +180,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     setTimeout(() => {
       logoAnimation.revert();
+      //   introTl.duration(0.5);
       introTl.play();
-    }, 3000);
+    }, 2000);
   });
   const titleBlock = document.querySelector("#hero #titleBlock");
   const tween = gsap.to(follower, {
@@ -288,4 +296,29 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   workMater.add(workIntroTl);
   workMater.add(workTl);
+
+  //  services animations
+  const servicesTitle = document.getElementById("services-title");
+
+  smoother.effects(servicesCards, {
+    lag: (i) => i * 0.5,
+  });
+
+  ScrollTrigger.create({
+    trigger: servicesTitle,
+    start: "50% 50%",
+    end: "bottom bottom",
+    endTrigger: "#services",
+    scrub: 1,
+    pin: true,
+  });
+
+  //   about me
+
+  const cards = gsap.utils.toArray("#about .draggable-card");
+
+  Draggable.create(cards, {
+    bounds: "#about",
+    inertia: true,
+  });
 });
